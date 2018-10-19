@@ -22,10 +22,33 @@ public class Practice06Test {
 			stack.pop();
 		}
 	}
-	
+
+	public String toLower(String str){
+		String out = "";
+		for (int i = 0; i < str.length(); i++){
+			if(str.charAt(i) >= 'A' && str.charAt(i) <= 'Z'){
+				out += (char) (str.charAt(i) + 32);
+			} else {
+				out += str.charAt(i);
+			}
+		}
+		return out;
+	}
+
+	public String removeIllegal(String str){
+		String out = "";
+		for(int i = 0; i < str.length(); i++){
+			if (str.charAt(i) >= 'a' && str.charAt(i) <= 'z'){
+				out += str.charAt(i);
+			}
+		}
+		return out;
+	}
 	
 	public boolean isPalindrome(String item) {
 		clearData();
+		item = toLower(item);
+		item = removeIllegal(item);
 		for (int i = 0; i < item.length(); i++) {
 			stack.push(item.substring(i, i+1));
 			queue.enqueue(item.substring(i, i+1));
